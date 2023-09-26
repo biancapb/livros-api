@@ -49,8 +49,14 @@ def criar_livro():
   novo_livro = request.get_json()
   livros.append(novo_livro)
   return jsonify(livros)
-  
+
 # Excluir
+@app.route('/livros/<int:id>', methods=['DELETE'])
+def remover_livro(id):
+  for indice,livro in enumerate(livros):
+    if livro.get('id') == id:
+      del livros[indice]
+  return jsonify(livros)
 
 
 app.run(port=5000, host='localhost', debug=True)
