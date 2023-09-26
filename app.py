@@ -44,7 +44,12 @@ def editar_livro_id(id):
         return jsonify(livros[indice])
 
 # Criar
-
+@app.route('/livros', methods=['POST'])
+def criar_livro():
+  novo_livro = request.get_json()
+  livros.append(novo_livro)
+  return jsonify(livros)
+  
 # Excluir
 
 
